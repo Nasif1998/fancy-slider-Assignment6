@@ -45,7 +45,10 @@ const selectItem = (event, img) => {
   if (item === -1) {
     sliders.push(img);
   } else {
-    alert('Hey, Already added !')
+    // alert('Hey, Already added !')
+    element.classList.toggle("img-thumbnail", false);
+    let removedItem = sliders.indexOf(img);
+    sliders.splice(removedItem,1);
   }
 }
 var timer
