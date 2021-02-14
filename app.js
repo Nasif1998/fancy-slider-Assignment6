@@ -22,7 +22,7 @@ const showImages = (images) => {
   images.hits.forEach(image => {
     let div = document.createElement('div');
     div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2';
-    div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" title="${image.tags}">`;
+    div.innerHTML = ` <img class="img-fluid img-thumbnail" onmouseover="bigImg(this)" onmouseout="normalImg(this)" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" title="${image.tags}">`;
     gallery.appendChild(div);
     toggleSpinner(false);
   })
@@ -150,4 +150,14 @@ const toggleSpinner = (show) => {
   else{
     spinner.classList.add('d-none');
   }
+}
+
+function bigImg(x) {
+  x.style.height = "200px";
+  x.style.width = "250px";
+}
+
+function normalImg(x) {
+  x.style.height = "172px";
+  x.style.width = "250px";
 }
