@@ -45,12 +45,14 @@ const selectItem = (event, img) => {
 
   let item = sliders.indexOf(img);
   if (item === -1) {
+    element.classList.toggle("img-thumbnail", true);
     sliders.push(img);
   } else {
     // alert('Hey, Already added !')
     element.classList.toggle("img-thumbnail", false);
     let removedItem = sliders.indexOf(img);
     sliders.splice(removedItem, 1);
+    // selectItem(event,img);
   }
 }
 var timer
@@ -74,8 +76,11 @@ const createSlider = () => {
   // hide image aria
   imagesArea.style.display = 'none';
   const duration = document.getElementById('duration').value || 1000;
-  if (duration <= 0) {
+  if (duration < 0) {
     alert("Time can't be negative!");
+  }
+  else if(duration < 500){
+    alert("It will be too fast! Set time duration at least 500 ms");
   }
   else {
     sliders.forEach(slide => {
